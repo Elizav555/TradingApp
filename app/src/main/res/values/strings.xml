@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TradingApp</string>
+    <string name="profile">Profile</string>
+    <string name="signals_list">Signals list</string>
+    <string name="promo_list">Promo List</string>
+    <string name="login">Login</string>
+    <string name="bottom_host">Bottom Host</string>
+    <string name="auth">Auth</string>
 </resources>
