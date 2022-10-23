@@ -19,7 +19,11 @@ class AuthInteractorImpl @Inject constructor(
                     authRepository.partnerAuth(login, password).fold(
                         onSuccess = { partnerToken ->
                             Result.success(
-                                Client(peanutToken, partnerToken)
+                                Client(
+                                    login = login,
+                                    peanutToken = peanutToken,
+                                    partnerToken = partnerToken
+                                )
                             )
                         },
                         onFailure = { ex -> Result.failure(ex) }

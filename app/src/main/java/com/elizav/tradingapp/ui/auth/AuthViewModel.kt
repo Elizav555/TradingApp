@@ -5,6 +5,8 @@ import androidx.lifecycle.viewModelScope
 import com.elizav.tradingapp.domain.interactor.AuthInteractor
 import com.elizav.tradingapp.domain.model.AppException.Companion.AUTH_EXCEPTION
 import com.elizav.tradingapp.domain.model.Client
+import com.elizav.tradingapp.ui.auth.state.AuthEvent
+import com.elizav.tradingapp.ui.auth.state.AuthScreenState
 import com.elizav.tradingapp.ui.navigation.Destination
 import com.elizav.tradingapp.ui.navigation.navigator.AppNavigator
 import com.elizav.tradingapp.ui.utils.Command
@@ -12,7 +14,10 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 @HiltViewModel
@@ -24,15 +29,18 @@ class AuthViewModel @Inject constructor(
         Channel(capacity = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST)
     val commandEvent = _commandEvent.receiveAsFlow()
 
+    private val _uiState: MutableStateFlow<AuthScreenState> =
+        MutableStateFlow(AuthScreenState(true))
+    val uiState: StateFlow<AuthScreenState> = _uiState
+
     init {
-        //_commandEvent.trySend(Command.HandleLoadingCommand(isLoading = true))
-        //checkAuth()
+        checkAuth()
     }
 
     fun onEvent(event: AuthEvent) {
         when (event) {
             is AuthEvent.SignInEvent -> {
-                _commandEvent.trySend(Command.HandleLoadingCommand(isLoading = true))
+                _uiState.update { it.copy(isLoading = true) }
                 // signIn(event.login, event.password)
                 signIn(MOCKED_LOGIN, MOCKED_PASSWORD)
             }
@@ -49,7 +57,8 @@ class AuthViewModel @Inject constructor(
     }
 
     private fun checkAuth() = viewModelScope.launch {
-        TODO("Not yet implemented")
+        //TODO
+        _uiState.update { it.copy(isLoading = false) }
     }
 
 
