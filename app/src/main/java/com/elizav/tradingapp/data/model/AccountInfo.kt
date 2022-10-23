@@ -1,5 +1,7 @@
 package com.elizav.tradingapp.data.model
 
+import com.elizav.tradingapp.data.model.token.ExtensionData
+
 data class AccountInfo(
     val address: String,
     val balance: Double,

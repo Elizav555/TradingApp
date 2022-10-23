@@ -7,4 +7,5 @@
     <string name="bottom_host">Bottom Host</string>
     <string name="auth">Auth</string>
     <string name="logout">logout</string>
+    <string name="get_signals">Get Signals</string>
 </resources>

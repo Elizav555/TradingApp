@@ -1,4 +1,4 @@
-package com.elizav.tradingapp.domain
+package com.elizav.tradingapp.domain.repository
 
 import com.elizav.tradingapp.domain.model.AccountInfo
 

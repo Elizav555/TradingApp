@@ -1,7 +1,6 @@
 package com.elizav.tradingapp.data.network
 
-import com.elizav.tradingapp.data.model.AuthParams
-import com.elizav.tradingapp.data.model.Token
+import com.elizav.tradingapp.data.model.params.AuthParams
 import com.elizav.tradingapp.domain.model.AppException
 import javax.inject.Inject
 import kotlinx.serialization.decodeFromString

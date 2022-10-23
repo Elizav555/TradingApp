@@ -22,10 +22,10 @@ fun BottomHostGraph(navController: NavHostController, client: Client?) {
             ProfileScreen(navController = navController, client = client)
         }
         composable(destination = Destination.SignalsListDestination) {
-            SignalsListScreen(navController = navController)
+            SignalsListScreen(navController = navController, client = client)
         }
         composable(destination = Destination.PromoListDestination) {
-            PromoListScreen(navController = navController)
+            PromoListScreen(navController = navController, client = client)
         }
     }
 }

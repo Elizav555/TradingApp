@@ -1,8 +1,8 @@
 package com.elizav.tradingapp.di.coroutine
 
-import com.elizav.tradingapp.di.coroutine.DefaultDispatcher
-import com.elizav.tradingapp.di.coroutine.IoDispatcher
-import com.elizav.tradingapp.di.coroutine.MainDispatcher
+import com.elizav.tradingapp.di.qualifiers.DefaultDispatcher
+import com.elizav.tradingapp.di.qualifiers.IoDispatcher
+import com.elizav.tradingapp.di.qualifiers.MainDispatcher
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,9 +1,9 @@
 package com.elizav.tradingapp.data.network
 
 import com.elizav.tradingapp.data.model.AccountInfo
-import com.elizav.tradingapp.data.model.AuthParams
-import com.elizav.tradingapp.data.model.InfoParams
-import com.elizav.tradingapp.data.model.Token
+import com.elizav.tradingapp.data.model.params.AuthParams
+import com.elizav.tradingapp.data.model.params.InfoParams
+import com.elizav.tradingapp.data.model.token.Token
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST

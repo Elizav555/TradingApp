@@ -1,7 +1,7 @@
 package com.elizav.tradingapp.domain.interactor
 
-import com.elizav.tradingapp.di.coroutine.IoDispatcher
-import com.elizav.tradingapp.domain.ClientInfoRepository
+import com.elizav.tradingapp.di.qualifiers.IoDispatcher
+import com.elizav.tradingapp.domain.repository.ClientInfoRepository
 import com.elizav.tradingapp.domain.model.AppException
 import com.elizav.tradingapp.domain.model.Client
 import com.elizav.tradingapp.domain.model.ClientInfo

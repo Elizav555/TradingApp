@@ -4,6 +4,8 @@ import com.elizav.tradingapp.domain.interactor.AuthInteractor
 import com.elizav.tradingapp.domain.interactor.AuthInteractorImpl
 import com.elizav.tradingapp.domain.interactor.ClientInfoInteractor
 import com.elizav.tradingapp.domain.interactor.ClientInfoInteractorImpl
+import com.elizav.tradingapp.domain.interactor.SignalsInteractor
+import com.elizav.tradingapp.domain.interactor.SignalsInteractorImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -22,4 +24,9 @@ abstract class InteractorBindsModule {
     abstract fun bindClientInfoInteractor(
         ClientInfoInteractorImpl: ClientInfoInteractorImpl
     ): ClientInfoInteractor
+
+    @Binds
+    abstract fun bindSignalsInteractor(
+        SignalsInteractorImpl: SignalsInteractorImpl
+    ): SignalsInteractor
 }

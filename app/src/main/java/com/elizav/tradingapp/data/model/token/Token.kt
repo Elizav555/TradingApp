@@ -1,4 +1,4 @@
-package com.elizav.tradingapp.data.model
+package com.elizav.tradingapp.data.model.token
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

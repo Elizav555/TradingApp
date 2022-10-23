@@ -1,7 +1,7 @@
 package com.elizav.tradingapp.domain.interactor
 
-import com.elizav.tradingapp.di.coroutine.IoDispatcher
-import com.elizav.tradingapp.domain.AuthRepository
+import com.elizav.tradingapp.di.qualifiers.IoDispatcher
+import com.elizav.tradingapp.domain.repository.AuthRepository
 import com.elizav.tradingapp.domain.model.Client
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher

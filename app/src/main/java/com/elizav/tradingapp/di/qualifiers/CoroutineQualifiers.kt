@@ -1,4 +1,4 @@
-package com.elizav.tradingapp.di.coroutine
+package com.elizav.tradingapp.di.qualifiers
 
 import javax.inject.Qualifier
 
