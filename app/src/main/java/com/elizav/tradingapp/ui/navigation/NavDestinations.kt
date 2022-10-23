@@ -7,6 +7,7 @@ import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.elizav.tradingapp.R
+import com.elizav.tradingapp.domain.model.Client
 
 sealed class Destination(val route: Route, @StringRes val resourceId: Int, vararg params: String) {
     val fullRoute: String = if (params.isEmpty()) route.value else {
@@ -30,8 +31,8 @@ sealed class Destination(val route: Route, @StringRes val resourceId: Int, varar
     object AuthGraphDestination : NoArgumentsDestination(Route.AuthGraphRoute, R.string.auth)
     object AuthDestination : NoArgumentsDestination(Route.AuthRoute, R.string.login)
     object BottomGraphDestination : Destination(Route.BottomGraphRoute, R.string.bottom_host) {
-        operator fun invoke(token: String): Route {
-            (route as Route.BottomGraphRoute).invoke(token)
+        operator fun invoke(client: Client): Route {
+            (route as Route.BottomGraphRoute).invoke(client)
             return route
         }
     }

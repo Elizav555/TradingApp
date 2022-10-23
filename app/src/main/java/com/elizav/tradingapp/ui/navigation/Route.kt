@@ -1,5 +1,7 @@
 package com.elizav.tradingapp.ui.navigation
 
+import com.elizav.tradingapp.domain.model.Client
+
 sealed class Route(val value: String) {
     sealed class RouteWithArgs(route: String, vararg params: String) : Route(route)
 
@@ -8,11 +10,11 @@ sealed class Route(val value: String) {
     object AuthGraphRoute : Route("auth_graph")
 
     object BottomGraphRoute : Route("bottom_graph") {
-        const val TOKEN_KEY = "token"
+        const val CLIENT_KEY = "client"
 
-        operator fun invoke(token: String) {
+        operator fun invoke(client: Client) {
             this.value.appendParams(
-                TOKEN_KEY to token
+                CLIENT_KEY to client
             )
         }
     }

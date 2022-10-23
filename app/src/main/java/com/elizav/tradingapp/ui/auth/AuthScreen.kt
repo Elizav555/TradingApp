@@ -22,11 +22,13 @@ fun AuthScreen(navController: NavController) {
     val authViewModel: AuthViewModel = hiltViewModel<AuthViewModel>()
     Scaffold() { padding ->
         Column(
-            modifier = Modifier.padding(padding).fillMaxSize(),
+            modifier = Modifier
+                .padding(padding)
+                .fillMaxSize(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Button(onClick = { authViewModel.navigateToBottomHost("") }) {
+            Button(onClick = { authViewModel.onEvent(AuthEvent.SignInEvent("", "")) }) {
                 Text(
                     text = stringResource(id = R.string.login),
                     modifier = Modifier.padding(padding)
