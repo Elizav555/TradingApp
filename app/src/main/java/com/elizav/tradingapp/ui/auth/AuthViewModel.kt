@@ -7,7 +7,7 @@ import com.elizav.tradingapp.domain.model.AppException.Companion.AUTH_EXCEPTION
 import com.elizav.tradingapp.domain.model.Client
 import com.elizav.tradingapp.ui.auth.state.AuthEvent
 import com.elizav.tradingapp.ui.auth.state.AuthScreenState
-import com.elizav.tradingapp.ui.navigation.Destination
+import com.elizav.tradingapp.ui.navigation.Route
 import com.elizav.tradingapp.ui.navigation.navigator.AppNavigator
 import com.elizav.tradingapp.ui.utils.Command
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -61,9 +61,8 @@ class AuthViewModel @Inject constructor(
         _uiState.update { it.copy(isLoading = false) }
     }
 
-
     private fun navigateToBottomHost(client: Client) {
-        appNavigator.tryNavigateTo(Destination.BottomGraphDestination(client = client))
+        appNavigator.tryNavigateTo(Route.BottomGraphRoute().invoke(client = client))
     }
 
     companion object {

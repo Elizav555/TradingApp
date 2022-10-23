@@ -6,4 +6,5 @@
     <string name="login">Login</string>
     <string name="bottom_host">Bottom Host</string>
     <string name="auth">Auth</string>
+    <string name="logout">logout</string>
 </resources>

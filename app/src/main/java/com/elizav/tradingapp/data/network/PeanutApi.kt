@@ -1,6 +1,8 @@
 package com.elizav.tradingapp.data.network
 
+import com.elizav.tradingapp.data.model.AccountInfo
 import com.elizav.tradingapp.data.model.AuthParams
+import com.elizav.tradingapp.data.model.InfoParams
 import com.elizav.tradingapp.data.model.Token
 import retrofit2.Response
 import retrofit2.http.Body
@@ -11,4 +13,14 @@ interface PeanutApi {
     suspend fun isAccountCredentialsCorrect(
         @Body authParams: AuthParams
     ): Response<Token>
+
+    @POST("/api/ClientCabinetBasic/GetLastFourNumbersPhone")
+    suspend fun getLastFourNumbersPhone(
+        @Body infoParams: InfoParams
+    ): Response<String>
+
+    @POST("/api/ClientCabinetBasic/GetAccountInformation")
+    suspend fun getAccountInformation(
+        @Body infoParams: InfoParams
+    ): Response<AccountInfo>
 }

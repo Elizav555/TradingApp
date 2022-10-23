@@ -32,4 +32,8 @@ class AuthInteractorImpl @Inject constructor(
                 onFailure = { ex -> Result.failure(ex) }
             )
         }
+
+    override suspend fun logout(): Result<Boolean> = withContext(coroutineDispatcher) {
+        authRepository.logout()
+    }
 }

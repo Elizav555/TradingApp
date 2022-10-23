@@ -5,6 +5,7 @@ import com.elizav.tradingapp.data.network.PartnerRequest
 import com.elizav.tradingapp.data.network.PeanutApi
 import com.elizav.tradingapp.domain.AuthRepository
 import com.elizav.tradingapp.domain.model.AppException
+import com.elizav.tradingapp.domain.model.AppException.Companion.AUTH_EXCEPTION
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
@@ -16,8 +17,7 @@ class AuthRepositoryImpl @Inject constructor(
             if (isSuccessful && body() != null) {
                 Result.success(body()!!.token)
             } else {
-                Result.failure(errorBody()?.string()?.let { AppException.ApiException(it) }
-                    ?: AppException.ApiException())
+                Result.failure(AppException.AuthException(errorBody()?.string() ?: AUTH_EXCEPTION))
             }
         }
 
