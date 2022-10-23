@@ -2,6 +2,7 @@ package com.elizav.tradingapp.ui.navigation.graph
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import com.elizav.tradingapp.domain.model.Client
 import com.elizav.tradingapp.ui.navigation.Destination
 import com.elizav.tradingapp.ui.navigation.NavHost
 import com.elizav.tradingapp.ui.navigation.Route
@@ -11,14 +12,14 @@ import com.elizav.tradingapp.ui.promo.PromoListScreen
 import com.elizav.tradingapp.ui.signals.SignalsListScreen
 
 @Composable
-fun BottomHostGraph(navController: NavHostController) {
+fun BottomHostGraph(navController: NavHostController, client: Client?) {
     NavHost(
         navController = navController,
         startDestination = Destination.SignalsListDestination,
-        route = Route.BottomGraphRoute
+        route = Route.BottomGraphRoute()
     ) {
         composable(destination = Destination.ProfileDestination) {
-            ProfileScreen(navController = navController)
+            ProfileScreen(navController = navController, client = client)
         }
         composable(destination = Destination.SignalsListDestination) {
             SignalsListScreen(navController = navController)

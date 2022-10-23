@@ -5,8 +5,12 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
+import com.elizav.tradingapp.client.bottomHost.BottomHostViewModel
 import com.elizav.tradingapp.ui.navigation.Destination
 import com.elizav.tradingapp.ui.navigation.graph.BottomHostGraph
 
@@ -14,6 +18,8 @@ import com.elizav.tradingapp.ui.navigation.graph.BottomHostGraph
 @Composable
 fun BottomHostScreen() {
     val navController = rememberNavController()
+    val viewModel: BottomHostViewModel = hiltViewModel()
+    val clientState by viewModel.clientState.collectAsState()
     val items = listOf(
         Destination.ProfileDestination,
         Destination.SignalsListDestination,
@@ -23,7 +29,7 @@ fun BottomHostScreen() {
         bottomBar = { BottomNavigation(navController = navController, items = items) }
     ) {
         Surface(modifier = Modifier.padding(it)) {
-            BottomHostGraph(navController = navController)
+            BottomHostGraph(navController = navController, client = clientState)
         }
     }
 }

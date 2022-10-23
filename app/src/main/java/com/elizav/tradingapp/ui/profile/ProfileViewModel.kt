@@ -7,8 +7,6 @@ import com.elizav.tradingapp.domain.interactor.AuthInteractor
 import com.elizav.tradingapp.domain.interactor.ClientInfoInteractor
 import com.elizav.tradingapp.domain.model.AppException.Companion.CLIENT_STATE_EXCEPTION
 import com.elizav.tradingapp.domain.model.Client
-import com.elizav.tradingapp.ui.navigation.Destination
-import com.elizav.tradingapp.ui.navigation.Route
 import com.elizav.tradingapp.ui.navigation.navigator.AppNavigator
 import com.elizav.tradingapp.ui.profile.state.ProfileEvent
 import com.elizav.tradingapp.ui.profile.state.ProfileScreenState
@@ -38,18 +36,15 @@ class ProfileViewModel @Inject constructor(
         MutableStateFlow(ProfileScreenState(true))
     val uiState: StateFlow<ProfileScreenState> = _uiState
 
-    init {
-        val client: Client? =
-            savedStateHandle.get<Client>(Route.BottomGraphRoute.CLIENT_KEY)
-        _uiState.update { it.copy(isLoading = true, client = client) }
-        client?.let { loadInfo(it) }
-    }
-
     fun onEvent(event: ProfileEvent) {
         when (event) {
             is ProfileEvent.LogoutEvent -> {
                 _uiState.update { it.copy(isLoading = true) }
                 logout()
+            }
+            is ProfileEvent.InitClientEvent -> {
+                _uiState.update { it.copy(isLoading = true, client = event.client) }
+                loadInfo(event.client)
             }
         }
     }

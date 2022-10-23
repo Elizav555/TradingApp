@@ -1,12 +1,12 @@
 package com.elizav.tradingapp.di
 
 import com.elizav.tradingapp.data.network.PeanutApi
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -24,7 +24,8 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideConvertFactory(): GsonConverterFactory = GsonConverterFactory.create()
+    fun provideConvertFactory(): GsonConverterFactory =
+        GsonConverterFactory.create(GsonBuilder().setLenient().create())
 
     @Provides
     @Singleton

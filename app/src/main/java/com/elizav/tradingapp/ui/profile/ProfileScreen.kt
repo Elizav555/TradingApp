@@ -21,14 +21,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.elizav.tradingapp.R
+import com.elizav.tradingapp.domain.model.Client
 import com.elizav.tradingapp.ui.profile.state.ProfileEvent
 import com.elizav.tradingapp.ui.profile.state.ProfileScreenState
 import com.elizav.tradingapp.ui.utils.Command
 import com.elizav.tradingapp.ui.utils.Loading
 
 @Composable
-fun ProfileScreen(navController: NavController) {
+fun ProfileScreen(navController: NavController, client: Client?) {
     val profileViewModel: ProfileViewModel = hiltViewModel()
+    client?.let { profileViewModel.onEvent(ProfileEvent.InitClientEvent(it)) }
     val uiState by profileViewModel.uiState.collectAsState()
     val snackbarHostState = remember {
         SnackbarHostState()

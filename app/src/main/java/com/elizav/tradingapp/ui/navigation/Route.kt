@@ -2,20 +2,25 @@ package com.elizav.tradingapp.ui.navigation
 
 import com.elizav.tradingapp.domain.model.Client
 
-sealed class Route(val value: String) {
-    sealed class RouteWithArgs(route: String, vararg params: String) : Route(route)
-
+sealed class Route(open val value: String) {
     object RootRoute : Route("root")
     object AuthRoute : Route("auth")
     object AuthGraphRoute : Route("auth_graph")
 
-    object BottomGraphRoute : Route("bottom_graph") {
-        const val CLIENT_KEY = "client"
-
-        operator fun invoke(client: Client) {
-            this.value.appendParams(
-                CLIENT_KEY to client
+    data class BottomGraphRoute(override var value: String = "bottom_graph") : Route(value) {
+        operator fun invoke(client: Client): BottomGraphRoute {
+            value = value.appendParams(
+                CLIENT_LOGIN to client.login,
+                CLIENT_PEANUT_TOKEN to client.peanutToken,
+                CLIENT_PARTNER_TOKEN to client.partnerToken
             )
+            return this
+        }
+
+        companion object {
+            const val CLIENT_LOGIN = "client login"
+            const val CLIENT_PEANUT_TOKEN = "client peanut token"
+            const val CLIENT_PARTNER_TOKEN = "client partner token"
         }
     }
 
