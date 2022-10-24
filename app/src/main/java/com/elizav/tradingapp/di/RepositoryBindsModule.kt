@@ -1,6 +1,6 @@
 package com.elizav.tradingapp.di
 
-import com.elizav.tradingapp.data.PromoRepositoryImpl
+import com.elizav.tradingapp.data.repository.PromoRepositoryImpl
 import com.elizav.tradingapp.data.repository.AuthRepositoryImpl
 import com.elizav.tradingapp.data.repository.ClientInfoRepositoryImpl
 import com.elizav.tradingapp.data.repository.SignalsRepositoryImpl

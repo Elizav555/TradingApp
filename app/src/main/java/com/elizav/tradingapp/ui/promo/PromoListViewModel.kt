@@ -46,8 +46,8 @@ class PromoListViewModel @Inject constructor(
 
     private fun loadPromo() = viewModelScope.launch {
         promoInteractor.getPromo().fold(
-            onSuccess = { promo ->
-                _uiState.update { it.copy(isLoading = false, promoList = listOf(promo)) }
+            onSuccess = { promoList ->
+                _uiState.update { it.copy(isLoading = false, promoList = promoList) }
             },
             onFailure = { ex ->
                 _commandEvent.trySend(

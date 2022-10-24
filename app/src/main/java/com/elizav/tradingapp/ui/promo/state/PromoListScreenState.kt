@@ -1,8 +1,8 @@
 package com.elizav.tradingapp.ui.promo.state
 
-import com.elizav.tradingapp.domain.model.Client
+import com.elizav.tradingapp.domain.model.Promo
 
 data class PromoListScreenState(
     val isLoading: Boolean,
-    val promoList: List<String> = emptyList()
+    val promoList: List<Promo> = emptyList()
 )

@@ -1,4 +1,4 @@
-package com.elizav.tradingapp.data.network
+package com.elizav.tradingapp.data.network.requests
 
 import com.elizav.tradingapp.data.model.params.AuthParams
 import com.elizav.tradingapp.domain.model.AppException
@@ -15,7 +15,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class PartnerRequest @Inject constructor(
     private val okHttpClient: OkHttpClient,
-    private val gsonConverterFactory: GsonConverterFactory
 ) {
     operator fun invoke(authParams: AuthParams): Result<String> {
         val body: RequestBody = Json.encodeToString(authParams)
