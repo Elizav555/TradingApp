@@ -25,7 +25,7 @@ fun BottomHostGraph(navController: NavHostController, client: Client?) {
             SignalsListScreen(navController = navController, client = client)
         }
         composable(destination = Destination.PromoListDestination) {
-            PromoListScreen(navController = navController, client = client)
+            PromoListScreen(navController = navController)
         }
     }
 }

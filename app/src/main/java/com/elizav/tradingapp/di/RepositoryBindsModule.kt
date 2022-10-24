@@ -1,10 +1,12 @@
 package com.elizav.tradingapp.di
 
+import com.elizav.tradingapp.data.repository.PromoRepositoryImpl
 import com.elizav.tradingapp.data.repository.AuthRepositoryImpl
 import com.elizav.tradingapp.data.repository.ClientInfoRepositoryImpl
 import com.elizav.tradingapp.data.repository.SignalsRepositoryImpl
 import com.elizav.tradingapp.domain.repository.AuthRepository
 import com.elizav.tradingapp.domain.repository.ClientInfoRepository
+import com.elizav.tradingapp.domain.repository.PromoRepository
 import com.elizav.tradingapp.domain.repository.SignalsRepository
 import dagger.Binds
 import dagger.Module
@@ -33,4 +35,10 @@ abstract class RepositoryBindsModule {
     abstract fun bindSignalsRepository(
         SignalsRepositoryImpl: SignalsRepositoryImpl
     ): SignalsRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindPromoRepository(
+        PromoRepositoryImpl: PromoRepositoryImpl
+    ): PromoRepository
 }

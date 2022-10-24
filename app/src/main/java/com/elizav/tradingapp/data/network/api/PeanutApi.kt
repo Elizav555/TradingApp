@@ -1,4 +1,4 @@
-package com.elizav.tradingapp.data.network
+package com.elizav.tradingapp.data.network.api
 
 import com.elizav.tradingapp.data.model.AccountInfo
 import com.elizav.tradingapp.data.model.params.AuthParams

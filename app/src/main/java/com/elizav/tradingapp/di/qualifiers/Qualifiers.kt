@@ -9,3 +9,7 @@ annotation class PeanutBaseUrl
 @Qualifier
 @Retention(AnnotationRetention.RUNTIME)
 annotation class PartnerBaseUrl
+
+@Qualifier
+@Retention(AnnotationRetention.RUNTIME)
+annotation class PromoBaseUrl

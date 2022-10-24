@@ -1,10 +1,11 @@
 package com.elizav.tradingapp.di
 
 import com.elizav.tradingapp.data.network.BaseUrl
-import com.elizav.tradingapp.data.network.PartnerApi
-import com.elizav.tradingapp.data.network.PeanutApi
+import com.elizav.tradingapp.data.network.api.PartnerApi
+import com.elizav.tradingapp.data.network.api.PeanutApi
 import com.elizav.tradingapp.di.qualifiers.PartnerBaseUrl
 import com.elizav.tradingapp.di.qualifiers.PeanutBaseUrl
+import com.elizav.tradingapp.di.qualifiers.PromoBaseUrl
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -28,7 +29,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideConvertFactory(): GsonConverterFactory =
+    fun provideGsonConvertFactory(): GsonConverterFactory =
         GsonConverterFactory.create(GsonBuilder().setLenient().create())
 
     @Provides
@@ -49,6 +50,11 @@ class NetworkModule {
     @Singleton
     @PartnerBaseUrl
     fun providePartnerBaseUrl(): BaseUrl = BaseUrl.PartnerBaseUrl()
+
+    @Provides
+    @Singleton
+    @PromoBaseUrl
+    fun providePromoBaseUrl(): BaseUrl = BaseUrl.PromoBaseUrl()
 
     @Provides
     @Singleton
@@ -75,5 +81,4 @@ class NetworkModule {
         .addConverterFactory(converterFactory)
         .build()
         .create(PartnerApi::class.java)
-
 }

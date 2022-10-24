@@ -24,7 +24,6 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
     private val appNavigator: AppNavigator,
-    savedStateHandle: SavedStateHandle,
     private val authInteractor: AuthInteractor,
     private val clientInfoInteractor: ClientInfoInteractor,
 ) : ViewModel() {
