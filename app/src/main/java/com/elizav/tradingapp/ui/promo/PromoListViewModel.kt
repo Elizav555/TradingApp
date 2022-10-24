@@ -1,9 +1,12 @@
 package com.elizav.tradingapp.ui.promo
 
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.elizav.tradingapp.domain.interactor.PromoInteractor
 import com.elizav.tradingapp.domain.model.AppException.Companion.CLIENT_STATE_EXCEPTION
+import com.elizav.tradingapp.domain.model.EncodedLink
+import com.elizav.tradingapp.ui.navigation.Route
 import com.elizav.tradingapp.ui.navigation.navigator.AppNavigator
 import com.elizav.tradingapp.ui.promo.state.PromoListEvent
 import com.elizav.tradingapp.ui.promo.state.PromoListScreenState
@@ -38,8 +41,7 @@ class PromoListViewModel @Inject constructor(
     fun onEvent(event: PromoListEvent) {
         when (event) {
             is PromoListEvent.OnPromoClick -> {
-                _uiState.update { it.copy(isLoading = true) }
-                //TODO
+                appNavigator.tryNavigateTo(Route.WebViewRoute().invoke(EncodedLink(event.link).encodedLink))
             }
         }
     }

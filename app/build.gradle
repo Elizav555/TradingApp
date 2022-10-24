@@ -50,6 +50,8 @@ android {
 }
 
 dependencies {
+    implementation "io.coil-kt:coil:2.2.2"
+
     //region Hilt
     def hilt = "2.42"
     implementation "com.google.dagger:hilt-android:${hilt}"

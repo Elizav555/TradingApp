@@ -1,4 +1,4 @@
-package com.elizav.tradingapp.client.bottomHost
+package com.elizav.tradingapp.ui.bottomHost
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel

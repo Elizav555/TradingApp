@@ -8,4 +8,5 @@
     <string name="auth">Auth</string>
     <string name="logout">logout</string>
     <string name="get_signals">Get Signals</string>
+    <string name="web_view">Web</string>
 </resources>

@@ -7,6 +7,7 @@ import com.elizav.tradingapp.ui.navigation.Destination
 import com.elizav.tradingapp.ui.navigation.NavHost
 import com.elizav.tradingapp.ui.navigation.Route
 import com.elizav.tradingapp.ui.navigation.composable
+import com.elizav.tradingapp.ui.web.WebViewScreen
 
 @Composable
 fun RootGraph(navController: NavHostController) {
@@ -18,6 +19,9 @@ fun RootGraph(navController: NavHostController) {
         authGraph(navController = navController)
         composable(destination = Destination.BottomGraphDestination) {
             BottomHostScreen()
+        }
+        composable(destination = Destination.WebViewDestination) {
+            WebViewScreen(navController = navController)
         }
     }
 }

@@ -10,6 +10,7 @@ import com.elizav.tradingapp.R
 import com.elizav.tradingapp.ui.navigation.Route.BottomGraphRoute.Companion.CLIENT_LOGIN
 import com.elizav.tradingapp.ui.navigation.Route.BottomGraphRoute.Companion.CLIENT_PARTNER_TOKEN
 import com.elizav.tradingapp.ui.navigation.Route.BottomGraphRoute.Companion.CLIENT_PEANUT_TOKEN
+import com.elizav.tradingapp.ui.navigation.Route.WebViewRoute.Companion.URL_KEY
 
 sealed class Destination(val route: Route, @StringRes val resourceId: Int, vararg params: String) {
     val fullRoute: String = if (params.isEmpty()) route.value else {
@@ -37,6 +38,12 @@ sealed class Destination(val route: Route, @StringRes val resourceId: Int, varar
         CLIENT_LOGIN,
         CLIENT_PEANUT_TOKEN,
         CLIENT_PARTNER_TOKEN,
+    )
+
+    object WebViewDestination : Destination(
+        Route.WebViewRoute(),
+        R.string.web_view,
+        URL_KEY
     )
 
     object ProfileDestination :

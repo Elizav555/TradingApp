@@ -1,5 +1,6 @@
 package com.elizav.tradingapp.ui.navigation
 
+import android.net.Uri
 import com.elizav.tradingapp.domain.model.Client
 
 sealed class Route(open val value: String) {
@@ -21,6 +22,19 @@ sealed class Route(open val value: String) {
             const val CLIENT_LOGIN = "client login"
             const val CLIENT_PEANUT_TOKEN = "client peanut token"
             const val CLIENT_PARTNER_TOKEN = "client partner token"
+        }
+    }
+
+    data class WebViewRoute(override var value: String = "web_view") : Route(value) {
+        operator fun invoke(url: String): WebViewRoute {
+            value = value.appendParams(
+                URL_KEY to url
+            )
+            return this
+        }
+
+        companion object {
+            const val URL_KEY = "url key"
         }
     }
 
