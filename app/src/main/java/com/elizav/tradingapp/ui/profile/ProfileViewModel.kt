@@ -1,6 +1,5 @@
 package com.elizav.tradingapp.ui.profile
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.elizav.tradingapp.domain.interactor.AuthInteractor
@@ -35,6 +34,7 @@ class ProfileViewModel @Inject constructor(
         MutableStateFlow(ProfileScreenState(true))
     val uiState: StateFlow<ProfileScreenState> = _uiState
 
+
     fun onEvent(event: ProfileEvent) {
         when (event) {
             is ProfileEvent.LogoutEvent -> {
@@ -42,7 +42,10 @@ class ProfileViewModel @Inject constructor(
                 logout()
             }
             is ProfileEvent.InitClientEvent -> {
-                _uiState.update { it.copy(isLoading = true, client = event.client) }
+                if (_uiState.value.client != null) {
+                    return
+                }
+                _uiState.update { it.copy(client = event.client) }
                 loadInfo(event.client)
             }
         }

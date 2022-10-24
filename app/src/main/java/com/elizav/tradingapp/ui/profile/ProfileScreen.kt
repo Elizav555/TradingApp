@@ -31,6 +31,7 @@ import com.elizav.tradingapp.ui.utils.Loading
 fun ProfileScreen(navController: NavController, client: Client?) {
     val profileViewModel: ProfileViewModel = hiltViewModel()
     client?.let { profileViewModel.onEvent(ProfileEvent.InitClientEvent(it)) }
+
     val uiState by profileViewModel.uiState.collectAsState()
     val snackbarHostState = remember {
         SnackbarHostState()
