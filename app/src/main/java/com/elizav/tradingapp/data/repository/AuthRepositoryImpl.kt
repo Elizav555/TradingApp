@@ -2,7 +2,7 @@ package com.elizav.tradingapp.data.repository
 
 import com.elizav.tradingapp.data.model.params.AuthParams
 import com.elizav.tradingapp.data.network.PartnerRequest
-import com.elizav.tradingapp.data.network.PeanutApi
+import com.elizav.tradingapp.data.network.api.PeanutApi
 import com.elizav.tradingapp.domain.repository.AuthRepository
 import com.elizav.tradingapp.domain.model.AppException
 import com.elizav.tradingapp.domain.model.AppException.Companion.AUTH_EXCEPTION

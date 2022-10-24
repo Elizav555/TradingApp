@@ -2,7 +2,7 @@ package com.elizav.tradingapp.data.repository
 
 import com.elizav.tradingapp.data.mapper.AccountInfoMapper.toDomain
 import com.elizav.tradingapp.data.model.params.InfoParams
-import com.elizav.tradingapp.data.network.PeanutApi
+import com.elizav.tradingapp.data.network.api.PeanutApi
 import com.elizav.tradingapp.domain.repository.ClientInfoRepository
 import com.elizav.tradingapp.domain.model.AccountInfo
 import com.elizav.tradingapp.domain.model.AppException

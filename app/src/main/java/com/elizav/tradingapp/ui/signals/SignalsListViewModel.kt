@@ -24,7 +24,6 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class SignalsListViewModel @Inject constructor(
     private val appNavigator: AppNavigator,
-    savedStateHandle: SavedStateHandle,
     private val signalsInteractor: SignalsInteractor
 ) : ViewModel() {
     private val _commandEvent: Channel<Command> =

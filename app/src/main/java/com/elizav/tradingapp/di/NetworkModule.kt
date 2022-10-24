@@ -1,10 +1,12 @@
 package com.elizav.tradingapp.di
 
 import com.elizav.tradingapp.data.network.BaseUrl
-import com.elizav.tradingapp.data.network.PartnerApi
-import com.elizav.tradingapp.data.network.PeanutApi
+import com.elizav.tradingapp.data.network.api.PartnerApi
+import com.elizav.tradingapp.data.network.api.PeanutApi
+import com.elizav.tradingapp.data.network.api.PromoApi
 import com.elizav.tradingapp.di.qualifiers.PartnerBaseUrl
 import com.elizav.tradingapp.di.qualifiers.PeanutBaseUrl
+import com.elizav.tradingapp.di.qualifiers.PromoBaseUrl
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -15,6 +17,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.jaxb.JaxbConverterFactory
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -28,8 +31,13 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideConvertFactory(): GsonConverterFactory =
+    fun provideGsonConvertFactory(): GsonConverterFactory =
         GsonConverterFactory.create(GsonBuilder().setLenient().create())
+
+    @Provides
+    @Singleton
+    fun provideJaxbConvertFactory(): JaxbConverterFactory =
+        JaxbConverterFactory.create()
 
     @Provides
     @Singleton
@@ -49,6 +57,11 @@ class NetworkModule {
     @Singleton
     @PartnerBaseUrl
     fun providePartnerBaseUrl(): BaseUrl = BaseUrl.PartnerBaseUrl()
+
+    @Provides
+    @Singleton
+    @PromoBaseUrl
+    fun providePromoBaseUrl(): BaseUrl = BaseUrl.PromoBaseUrl()
 
     @Provides
     @Singleton
@@ -76,4 +89,16 @@ class NetworkModule {
         .build()
         .create(PartnerApi::class.java)
 
+    @Provides
+    @Singleton
+    fun providePromoApi(
+        @PromoBaseUrl baseUrl: BaseUrl,
+        okhttp: OkHttpClient,
+        converterFactory: JaxbConverterFactory,
+    ): PromoApi = Retrofit.Builder()
+        .baseUrl(baseUrl.value)
+        .client(okhttp)
+        .addConverterFactory(converterFactory)
+        .build()
+        .create(PromoApi::class.java)
 }
