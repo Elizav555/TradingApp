@@ -61,9 +61,9 @@ class AuthViewModel @Inject constructor(
     private fun checkAuth() = viewModelScope.launch {
         authInteractor.checkAuth().fold(
             onSuccess = { client ->
-                if (client?.partnerToken != null && client.peanutToken != null) {
+                client?.let {
                     navigateToBottomHost(client)
-                } else _uiState.update { it.copy(isLoading = false) }
+                } ?: _uiState.update { it.copy(isLoading = false) }
             },
             onFailure = { ex ->
                 _commandEvent.trySend(Command.ErrorCommand(ex.message ?: AUTH_EXCEPTION))

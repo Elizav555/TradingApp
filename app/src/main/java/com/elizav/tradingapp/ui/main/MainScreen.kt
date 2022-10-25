@@ -11,17 +11,24 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.elizav.tradingapp.ui.navigation.navigator.NavigationIntent
 import com.elizav.tradingapp.ui.navigation.graph.RootGraph
+import com.elizav.tradingapp.ui.navigation.navigator.NavigationIntent
 import com.elizav.tradingapp.ui.theme.TradingAppTheme
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.receiveAsFlow
 
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
     val mainViewModel: MainViewModel = hiltViewModel<MainViewModel>()
-
+    LaunchedEffect(key1 = Unit) {
+        mainViewModel.authState.distinctUntilChanged().collect {
+            if (!it) {
+                mainViewModel.onEvent(MainEvent.onTokenExpired)
+            }
+        }
+    }
     NavigationEffects(
         navigationChannel = mainViewModel.navigationChannel,
         navHostController = navController

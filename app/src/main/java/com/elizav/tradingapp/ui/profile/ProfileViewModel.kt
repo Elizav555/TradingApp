@@ -54,7 +54,6 @@ class ProfileViewModel @Inject constructor(
 
     private fun logout() = viewModelScope.launch {
         authInteractor.logout()
-        appNavigator.tryNavigateTo(Destination.AuthDestination.route)
     }
 
     private fun loadInfo(client: Client) = viewModelScope.launch {

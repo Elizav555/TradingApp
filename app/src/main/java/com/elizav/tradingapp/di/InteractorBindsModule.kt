@@ -39,8 +39,4 @@ abstract class InteractorBindsModule {
         PromoInteractorImpl: PromoInteractorImpl
     ): PromoInteractor
 
-    @Binds
-    abstract fun bindPreferencesInteractor(
-        PreferencesInteractorImpl: PreferencesInteractorImpl
-    ): PreferencesInteractor
 }

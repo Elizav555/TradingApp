@@ -46,15 +46,5 @@ abstract class RepositoryBindsModule {
         PromoRepositoryImpl: PromoRepositoryImpl
     ): PromoRepository
 
-    @Binds
-    @Singleton
-    abstract fun bindPreferences(
-        PreferencesImpl: PreferencesImpl
-    ): Preferences
 
-    @Binds
-    @Singleton
-    abstract fun bindPreferencesRepository(
-        PreferencesRepositoryImpl: PreferencesRepositoryImpl
-    ): PreferencesRepository
 }
