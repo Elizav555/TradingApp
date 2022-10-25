@@ -2,14 +2,15 @@ package com.elizav.tradingapp.ui.profile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.elizav.tradingapp.domain.interactor.AuthInteractor
-import com.elizav.tradingapp.domain.interactor.ClientInfoInteractor
-import com.elizav.tradingapp.domain.model.AppException.Companion.CLIENT_STATE_EXCEPTION
-import com.elizav.tradingapp.domain.model.Client
+import com.elizav.tradingapp.domain.interactor.auth.AuthInteractor
+import com.elizav.tradingapp.domain.interactor.clientInfo.ClientInfoInteractor
+import com.elizav.tradingapp.domain.model.client.Client
+import com.elizav.tradingapp.domain.model.utils.AppException.Companion.CLIENT_STATE_EXCEPTION
+import com.elizav.tradingapp.domain.model.utils.Command
+import com.elizav.tradingapp.ui.navigation.Destination
 import com.elizav.tradingapp.ui.navigation.navigator.AppNavigator
 import com.elizav.tradingapp.ui.profile.state.ProfileEvent
 import com.elizav.tradingapp.ui.profile.state.ProfileScreenState
-import com.elizav.tradingapp.ui.utils.Command
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.channels.BufferOverflow
@@ -53,6 +54,7 @@ class ProfileViewModel @Inject constructor(
 
     private fun logout() = viewModelScope.launch {
         authInteractor.logout()
+        appNavigator.tryNavigateTo(Destination.AuthDestination.route)
     }
 
     private fun loadInfo(client: Client) = viewModelScope.launch {

@@ -1,10 +1,10 @@
-package com.elizav.tradingapp.domain.interactor
+package com.elizav.tradingapp.domain.interactor.signals
 
 import com.elizav.tradingapp.di.qualifiers.IoDispatcher
-import com.elizav.tradingapp.domain.model.AppException
-import com.elizav.tradingapp.domain.model.Client
-import com.elizav.tradingapp.domain.model.Pair
-import com.elizav.tradingapp.domain.model.Signal
+import com.elizav.tradingapp.domain.model.utils.AppException
+import com.elizav.tradingapp.domain.model.client.Client
+import com.elizav.tradingapp.domain.model.signal.Pair
+import com.elizav.tradingapp.domain.model.signal.Signal
 import com.elizav.tradingapp.domain.repository.SignalsRepository
 import java.util.Calendar
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package com.elizav.tradingapp.ui.utils
+package com.elizav.tradingapp.ui.widgets
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

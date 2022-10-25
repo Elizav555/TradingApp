@@ -1,6 +1,6 @@
 package com.elizav.tradingapp.data.mapper
 
-import com.elizav.tradingapp.domain.model.Signal
+import com.elizav.tradingapp.domain.model.signal.Signal
 import java.util.Calendar
 import com.elizav.tradingapp.data.model.Signal as SignalData
 
@@ -12,7 +12,7 @@ object SignalMapper {
         cmd = Cmd,
         comment = Comment,
         id = Id,
-        pair = com.elizav.tradingapp.domain.model.Pair.values().firstOrNull { it.name == Pair },
+        pair = com.elizav.tradingapp.domain.model.signal.Pair.values().firstOrNull { it.name == Pair },
         period = Period,
         price = Price,
         sl = Sl,

@@ -1,4 +1,4 @@
-package com.elizav.tradingapp.domain.model
+package com.elizav.tradingapp.domain.model.utils
 
 sealed class AppException(override val message: String) : Exception(message) {
     data class ApiException(override val message: String = API_EXCEPTION) : AppException(message)

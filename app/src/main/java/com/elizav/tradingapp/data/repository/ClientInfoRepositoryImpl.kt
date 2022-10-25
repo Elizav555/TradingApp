@@ -4,8 +4,8 @@ import com.elizav.tradingapp.data.mapper.AccountInfoMapper.toDomain
 import com.elizav.tradingapp.data.model.params.InfoParams
 import com.elizav.tradingapp.data.network.api.PeanutApi
 import com.elizav.tradingapp.domain.repository.ClientInfoRepository
-import com.elizav.tradingapp.domain.model.AccountInfo
-import com.elizav.tradingapp.domain.model.AppException
+import com.elizav.tradingapp.domain.model.client.AccountInfo
+import com.elizav.tradingapp.domain.model.utils.AppException
 import javax.inject.Inject
 
 class ClientInfoRepositoryImpl @Inject constructor(

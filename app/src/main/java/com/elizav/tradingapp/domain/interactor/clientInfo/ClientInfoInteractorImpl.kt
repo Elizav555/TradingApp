@@ -1,10 +1,10 @@
-package com.elizav.tradingapp.domain.interactor
+package com.elizav.tradingapp.domain.interactor.clientInfo
 
 import com.elizav.tradingapp.di.qualifiers.IoDispatcher
 import com.elizav.tradingapp.domain.repository.ClientInfoRepository
-import com.elizav.tradingapp.domain.model.AppException
-import com.elizav.tradingapp.domain.model.Client
-import com.elizav.tradingapp.domain.model.ClientInfo
+import com.elizav.tradingapp.domain.model.utils.AppException
+import com.elizav.tradingapp.domain.model.client.Client
+import com.elizav.tradingapp.domain.model.client.ClientInfo
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext

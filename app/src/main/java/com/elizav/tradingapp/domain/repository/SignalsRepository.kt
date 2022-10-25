@@ -1,6 +1,6 @@
 package com.elizav.tradingapp.domain.repository
 
-import com.elizav.tradingapp.domain.model.Signal
+import com.elizav.tradingapp.domain.model.signal.Signal
 
 interface SignalsRepository {
     suspend fun getSignals(

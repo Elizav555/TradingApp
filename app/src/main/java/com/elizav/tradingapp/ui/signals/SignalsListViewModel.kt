@@ -1,15 +1,14 @@
 package com.elizav.tradingapp.ui.signals
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.elizav.tradingapp.domain.interactor.SignalsInteractor
-import com.elizav.tradingapp.domain.model.AppException.Companion.API_EXCEPTION
-import com.elizav.tradingapp.domain.model.Pair
+import com.elizav.tradingapp.domain.interactor.signals.SignalsInteractor
+import com.elizav.tradingapp.domain.model.utils.AppException.Companion.API_EXCEPTION
+import com.elizav.tradingapp.domain.model.signal.Pair
 import com.elizav.tradingapp.ui.navigation.navigator.AppNavigator
 import com.elizav.tradingapp.ui.signals.state.SignalsListEvent
 import com.elizav.tradingapp.ui.signals.state.SignalsListScreenState
-import com.elizav.tradingapp.ui.utils.Command
+import com.elizav.tradingapp.domain.model.utils.Command
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Calendar
 import javax.inject.Inject

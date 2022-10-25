@@ -1,7 +1,7 @@
 package com.elizav.tradingapp.ui.signals.state
 
-import com.elizav.tradingapp.domain.model.Client
-import com.elizav.tradingapp.domain.model.Pair
+import com.elizav.tradingapp.domain.model.client.Client
+import com.elizav.tradingapp.domain.model.signal.Pair
 import java.util.Calendar
 
 sealed class SignalsListEvent {

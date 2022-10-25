@@ -1,4 +1,4 @@
-package com.elizav.tradingapp.domain.interactor
+package com.elizav.tradingapp.domain.interactor.promo
 
 import com.elizav.tradingapp.di.qualifiers.IoDispatcher
 import com.elizav.tradingapp.domain.model.Promo

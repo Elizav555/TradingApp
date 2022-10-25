@@ -1,4 +1,4 @@
-package com.elizav.tradingapp.domain.model
+package com.elizav.tradingapp.domain.model.signal
 
 import java.util.Calendar
 

@@ -2,7 +2,7 @@ package com.elizav.tradingapp.ui.navigation.graph
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
-import com.elizav.tradingapp.domain.model.Client
+import com.elizav.tradingapp.domain.model.client.Client
 import com.elizav.tradingapp.ui.navigation.Destination
 import com.elizav.tradingapp.ui.navigation.NavHost
 import com.elizav.tradingapp.ui.navigation.Route

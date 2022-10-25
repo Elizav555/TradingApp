@@ -1,4 +1,4 @@
-package com.elizav.tradingapp.domain.model
+package com.elizav.tradingapp.domain.model.utils
 
 class EncodedLink(
     private val originalLink: String

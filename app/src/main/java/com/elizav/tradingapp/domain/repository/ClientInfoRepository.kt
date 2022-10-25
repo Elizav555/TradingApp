@@ -1,6 +1,6 @@
 package com.elizav.tradingapp.domain.repository
 
-import com.elizav.tradingapp.domain.model.AccountInfo
+import com.elizav.tradingapp.domain.model.client.AccountInfo
 
 interface ClientInfoRepository {
     suspend fun getLastFourNumbersPhone(login: String, peanutToken: String): Result<String>

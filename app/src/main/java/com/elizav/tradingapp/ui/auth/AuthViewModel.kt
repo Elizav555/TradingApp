@@ -2,14 +2,14 @@ package com.elizav.tradingapp.ui.auth
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.elizav.tradingapp.domain.interactor.AuthInteractor
-import com.elizav.tradingapp.domain.model.AppException.Companion.AUTH_EXCEPTION
-import com.elizav.tradingapp.domain.model.Client
+import com.elizav.tradingapp.domain.interactor.auth.AuthInteractor
+import com.elizav.tradingapp.domain.model.client.Client
+import com.elizav.tradingapp.domain.model.utils.AppException.Companion.AUTH_EXCEPTION
+import com.elizav.tradingapp.domain.model.utils.Command
 import com.elizav.tradingapp.ui.auth.state.AuthEvent
 import com.elizav.tradingapp.ui.auth.state.AuthScreenState
 import com.elizav.tradingapp.ui.navigation.Route
 import com.elizav.tradingapp.ui.navigation.navigator.AppNavigator
-import com.elizav.tradingapp.ui.utils.Command
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.channels.BufferOverflow
@@ -49,7 +49,9 @@ class AuthViewModel @Inject constructor(
 
     private fun signIn(login: String, password: String) = viewModelScope.launch {
         authInteractor.auth(login, password).fold(
-            onSuccess = { navigateToBottomHost(it) },
+            onSuccess = { client ->
+                navigateToBottomHost(client)
+            },
             onFailure = {
                 _commandEvent.trySend(Command.ErrorCommand(it.message ?: AUTH_EXCEPTION))
             }
@@ -57,8 +59,17 @@ class AuthViewModel @Inject constructor(
     }
 
     private fun checkAuth() = viewModelScope.launch {
-        //TODO
-        _uiState.update { it.copy(isLoading = false) }
+        authInteractor.checkAuth().fold(
+            onSuccess = { client ->
+                if (client?.partnerToken != null && client.peanutToken != null) {
+                    navigateToBottomHost(client)
+                } else _uiState.update { it.copy(isLoading = false) }
+            },
+            onFailure = { ex ->
+                _commandEvent.trySend(Command.ErrorCommand(ex.message ?: AUTH_EXCEPTION))
+                _uiState.update { it.copy(isLoading = false) }
+            }
+        )
     }
 
     private fun navigateToBottomHost(client: Client) {

@@ -1,7 +1,6 @@
 package com.elizav.tradingapp.ui.navigation
 
-import android.net.Uri
-import com.elizav.tradingapp.domain.model.Client
+import com.elizav.tradingapp.domain.model.client.Client
 
 sealed class Route(open val value: String) {
     object RootRoute : Route("root")

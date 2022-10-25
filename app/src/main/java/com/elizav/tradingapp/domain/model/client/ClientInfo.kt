@@ -1,4 +1,4 @@
-package com.elizav.tradingapp.domain.model
+package com.elizav.tradingapp.domain.model.client
 
 data class ClientInfo(
     val lastFourNumbPhone:String,

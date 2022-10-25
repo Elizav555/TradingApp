@@ -1,7 +1,7 @@
 package com.elizav.tradingapp.data.network.requests
 
 import com.elizav.tradingapp.data.model.params.AuthParams
-import com.elizav.tradingapp.domain.model.AppException
+import com.elizav.tradingapp.domain.model.utils.AppException
 import javax.inject.Inject
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -11,7 +11,6 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
-import retrofit2.converter.gson.GsonConverterFactory
 
 class PartnerRequest @Inject constructor(
     private val okHttpClient: OkHttpClient,

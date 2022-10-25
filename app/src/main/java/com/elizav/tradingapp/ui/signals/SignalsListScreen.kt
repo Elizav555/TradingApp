@@ -21,12 +21,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.elizav.tradingapp.R
-import com.elizav.tradingapp.domain.model.Client
-import com.elizav.tradingapp.domain.model.Pair
+import com.elizav.tradingapp.domain.model.client.Client
+import com.elizav.tradingapp.domain.model.signal.Pair
 import com.elizav.tradingapp.ui.signals.state.SignalsListEvent
 import com.elizav.tradingapp.ui.signals.state.SignalsListScreenState
-import com.elizav.tradingapp.ui.utils.Command
-import com.elizav.tradingapp.ui.utils.Loading
+import com.elizav.tradingapp.domain.model.utils.Command
+import com.elizav.tradingapp.ui.widgets.Loading
 import java.util.Calendar
 
 @Composable

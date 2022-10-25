@@ -1,6 +1,6 @@
 package com.elizav.tradingapp.data.network.api
 
-import com.elizav.tradingapp.data.model.AccountInfo
+import com.elizav.tradingapp.data.model.client.AccountInfo
 import com.elizav.tradingapp.data.model.params.AuthParams
 import com.elizav.tradingapp.data.model.params.InfoParams
 import com.elizav.tradingapp.data.model.token.Token

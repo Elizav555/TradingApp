@@ -1,6 +1,4 @@
-package com.elizav.tradingapp.data.model
-
-import com.elizav.tradingapp.data.model.token.ExtensionData
+package com.elizav.tradingapp.domain.model.client
 
 data class AccountInfo(
     val address: String,
@@ -11,7 +9,6 @@ data class AccountInfo(
     val currentTradesCount: Int,
     val currentTradesVolume: Int,
     val equity: Double,
-    val extensionData: ExtensionData?,
     val freeMargin: Double,
     val isAnyOpenTrades: Boolean,
     val isSwapFree: Boolean,

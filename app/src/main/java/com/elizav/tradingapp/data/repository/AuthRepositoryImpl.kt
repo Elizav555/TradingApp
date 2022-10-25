@@ -4,8 +4,8 @@ import com.elizav.tradingapp.data.model.params.AuthParams
 import com.elizav.tradingapp.data.network.requests.PartnerRequest
 import com.elizav.tradingapp.data.network.api.PeanutApi
 import com.elizav.tradingapp.domain.repository.AuthRepository
-import com.elizav.tradingapp.domain.model.AppException
-import com.elizav.tradingapp.domain.model.AppException.Companion.AUTH_EXCEPTION
+import com.elizav.tradingapp.domain.model.utils.AppException
+import com.elizav.tradingapp.domain.model.utils.AppException.Companion.AUTH_EXCEPTION
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
@@ -25,8 +25,4 @@ class AuthRepositoryImpl @Inject constructor(
         partnerRequest(
             AuthParams(login, password)
         )
-
-    override suspend fun logout(): Result<Boolean> {
-        TODO("Not yet implemented")
-    }
 }

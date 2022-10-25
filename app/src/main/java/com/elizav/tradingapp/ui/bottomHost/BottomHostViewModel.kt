@@ -2,7 +2,7 @@ package com.elizav.tradingapp.ui.bottomHost
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.elizav.tradingapp.domain.model.Client
+import com.elizav.tradingapp.domain.model.client.Client
 import com.elizav.tradingapp.ui.navigation.Route
 import com.elizav.tradingapp.ui.navigation.navigator.AppNavigator
 import dagger.hilt.android.lifecycle.HiltViewModel

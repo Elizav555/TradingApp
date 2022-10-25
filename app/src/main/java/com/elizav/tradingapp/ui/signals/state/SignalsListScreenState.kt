@@ -1,7 +1,7 @@
 package com.elizav.tradingapp.ui.signals.state
 
-import com.elizav.tradingapp.domain.model.Client
-import com.elizav.tradingapp.domain.model.Signal
+import com.elizav.tradingapp.domain.model.client.Client
+import com.elizav.tradingapp.domain.model.signal.Signal
 
 data class SignalsListScreenState(
     val isLoading: Boolean,

@@ -2,7 +2,7 @@ package com.elizav.tradingapp.ui.web
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.elizav.tradingapp.domain.model.EncodedLink
+import com.elizav.tradingapp.domain.model.utils.EncodedLink
 import com.elizav.tradingapp.ui.navigation.Route
 import com.elizav.tradingapp.ui.navigation.navigator.AppNavigator
 import dagger.hilt.android.lifecycle.HiltViewModel

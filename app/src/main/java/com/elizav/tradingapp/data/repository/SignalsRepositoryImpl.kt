@@ -2,8 +2,8 @@ package com.elizav.tradingapp.data.repository
 
 import com.elizav.tradingapp.data.mapper.SignalMapper.toDomain
 import com.elizav.tradingapp.data.network.api.PartnerApi
-import com.elizav.tradingapp.domain.model.AppException
-import com.elizav.tradingapp.domain.model.Signal
+import com.elizav.tradingapp.domain.model.utils.AppException
+import com.elizav.tradingapp.domain.model.signal.Signal
 import com.elizav.tradingapp.domain.repository.SignalsRepository
 import javax.inject.Inject
 
