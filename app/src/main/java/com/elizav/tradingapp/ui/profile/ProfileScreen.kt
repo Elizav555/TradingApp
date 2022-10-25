@@ -24,7 +24,7 @@ import com.elizav.tradingapp.R
 import com.elizav.tradingapp.domain.model.client.Client
 import com.elizav.tradingapp.ui.profile.state.ProfileEvent
 import com.elizav.tradingapp.ui.profile.state.ProfileScreenState
-import com.elizav.tradingapp.domain.model.utils.Command
+import com.elizav.tradingapp.domain.utils.Command
 import com.elizav.tradingapp.ui.widgets.Loading
 
 @Composable

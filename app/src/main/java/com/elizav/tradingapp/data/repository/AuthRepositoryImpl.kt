@@ -5,8 +5,8 @@ import com.elizav.tradingapp.data.network.api.PeanutApi
 import com.elizav.tradingapp.data.network.requests.PartnerRequest
 import com.elizav.tradingapp.domain.interactor.preferences.PreferencesInteractor
 import com.elizav.tradingapp.domain.model.client.Client
-import com.elizav.tradingapp.domain.model.utils.AppException
-import com.elizav.tradingapp.domain.model.utils.AppException.Companion.AUTH_EXCEPTION
+import com.elizav.tradingapp.domain.utils.AppException
+import com.elizav.tradingapp.domain.utils.AppException.Companion.AUTH_EXCEPTION
 import com.elizav.tradingapp.domain.repository.AuthRepository
 import javax.inject.Inject
 import kotlinx.coroutines.channels.BufferOverflow
@@ -44,8 +44,8 @@ class AuthRepositoryImpl @Inject constructor(
                     onSuccess = { partnerToken ->
                         val client = Client(
                             login = login,
-                            peanutToken = "peanutToken",
-                            partnerToken = "partnerToken"
+                            peanutToken = peanutToken,
+                            partnerToken = partnerToken
                         )
                         preferencesInteractor.saveClient(client)
                         _isClientAuthed.tryEmit(true)

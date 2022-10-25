@@ -14,7 +14,7 @@ interface PartnerApi {
         @Path("login") login: String,
         @Query("tradingsystem") tradingSystem: Int = 3,
         @Query("pairs") pairs: String,
-        @Query("from") from: Long,
-        @Query("to") to: Long
+        @Query("from") from: String,
+        @Query("to") to: String
     ): Response<List<Signal>>
 }

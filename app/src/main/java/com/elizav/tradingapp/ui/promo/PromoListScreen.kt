@@ -19,7 +19,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.elizav.tradingapp.ui.promo.state.PromoListEvent
 import com.elizav.tradingapp.ui.promo.state.PromoListScreenState
-import com.elizav.tradingapp.domain.model.utils.Command
+import com.elizav.tradingapp.domain.utils.Command
 import com.elizav.tradingapp.ui.widgets.Loading
 
 @Composable

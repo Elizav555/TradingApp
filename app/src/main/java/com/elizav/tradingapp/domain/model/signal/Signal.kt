@@ -7,7 +7,7 @@ data class Signal(
     val cmd: Int,
     val comment: String,
     val id: Int,
-    val pair: Pair?,
+    val signalPair: SignalPair?,
     val period: String,
     val price: Double,
     val sl: Double,

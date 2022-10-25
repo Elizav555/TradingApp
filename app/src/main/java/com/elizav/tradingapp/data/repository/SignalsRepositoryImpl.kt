@@ -4,9 +4,9 @@ import com.elizav.tradingapp.data.mapper.SignalMapper.toDomain
 import com.elizav.tradingapp.data.network.CODE_FORBIDDEN
 import com.elizav.tradingapp.data.network.api.PartnerApi
 import com.elizav.tradingapp.domain.model.signal.Signal
-import com.elizav.tradingapp.domain.model.utils.AppException
 import com.elizav.tradingapp.domain.repository.AuthRepository
 import com.elizav.tradingapp.domain.repository.SignalsRepository
+import com.elizav.tradingapp.domain.utils.AppException
 import javax.inject.Inject
 
 class SignalsRepositoryImpl @Inject constructor(
@@ -22,7 +22,11 @@ class SignalsRepositoryImpl @Inject constructor(
         to: Long
     ): Result<List<Signal>> = with(
         partnerApi.getAnalyticSignals(
-            partnerToken = partnerToken, login = login, pairs = pairs, from = from, to = to
+            partnerToken = partnerToken,
+            login = login,
+            pairs = pairs,
+            from = from.toString(),
+            to = to.toString()
         )
     ) {
         if (isSuccessful && body() != null) {

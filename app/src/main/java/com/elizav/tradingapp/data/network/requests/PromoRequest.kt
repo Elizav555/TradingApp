@@ -2,7 +2,7 @@ package com.elizav.tradingapp.data.network.requests
 
 import com.elizav.tradingapp.data.model.promo.Promo
 import com.elizav.tradingapp.data.model.promo.PromoConverter
-import com.elizav.tradingapp.domain.model.utils.AppException
+import com.elizav.tradingapp.domain.utils.AppException
 import javax.inject.Inject
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient

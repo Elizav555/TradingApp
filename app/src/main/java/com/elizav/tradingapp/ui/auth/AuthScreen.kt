@@ -23,7 +23,7 @@ import androidx.navigation.NavController
 import com.elizav.tradingapp.R
 import com.elizav.tradingapp.ui.auth.state.AuthEvent
 import com.elizav.tradingapp.ui.auth.state.AuthScreenState
-import com.elizav.tradingapp.domain.model.utils.Command
+import com.elizav.tradingapp.domain.utils.Command
 import com.elizav.tradingapp.ui.widgets.Loading
 
 @Composable

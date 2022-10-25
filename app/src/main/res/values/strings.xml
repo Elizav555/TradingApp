@@ -9,4 +9,10 @@
     <string name="logout">logout</string>
     <string name="get_signals">Get Signals</string>
     <string name="web_view">Web</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="choose_signal_params">Choose signals params</string>
+    <string name="from_date">From date</string>
+    <string name="to_date">To date</string>
+    <string name="signals_empty">Ups. Signals list is empty</string>
 </resources>

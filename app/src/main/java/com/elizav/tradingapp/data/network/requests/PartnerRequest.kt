@@ -1,7 +1,7 @@
 package com.elizav.tradingapp.data.network.requests
 
 import com.elizav.tradingapp.data.model.params.AuthParams
-import com.elizav.tradingapp.domain.model.utils.AppException
+import com.elizav.tradingapp.domain.utils.AppException
 import javax.inject.Inject
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString

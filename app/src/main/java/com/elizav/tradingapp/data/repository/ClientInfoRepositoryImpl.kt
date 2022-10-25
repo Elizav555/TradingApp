@@ -6,7 +6,7 @@ import com.elizav.tradingapp.data.network.CODE_FORBIDDEN
 import com.elizav.tradingapp.data.network.CODE_SERVER_ERROR
 import com.elizav.tradingapp.data.network.api.PeanutApi
 import com.elizav.tradingapp.domain.model.client.AccountInfo
-import com.elizav.tradingapp.domain.model.utils.AppException
+import com.elizav.tradingapp.domain.utils.AppException
 import com.elizav.tradingapp.domain.repository.AuthRepository
 import com.elizav.tradingapp.domain.repository.ClientInfoRepository
 import javax.inject.Inject

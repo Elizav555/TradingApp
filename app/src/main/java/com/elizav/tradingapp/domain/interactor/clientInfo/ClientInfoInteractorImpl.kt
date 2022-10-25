@@ -2,7 +2,7 @@ package com.elizav.tradingapp.domain.interactor.clientInfo
 
 import com.elizav.tradingapp.di.qualifiers.IoDispatcher
 import com.elizav.tradingapp.domain.repository.ClientInfoRepository
-import com.elizav.tradingapp.domain.model.utils.AppException
+import com.elizav.tradingapp.domain.utils.AppException
 import com.elizav.tradingapp.domain.model.client.Client
 import com.elizav.tradingapp.domain.model.client.ClientInfo
 import javax.inject.Inject

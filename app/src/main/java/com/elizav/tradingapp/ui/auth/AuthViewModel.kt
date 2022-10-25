@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.elizav.tradingapp.domain.interactor.auth.AuthInteractor
 import com.elizav.tradingapp.domain.model.client.Client
-import com.elizav.tradingapp.domain.model.utils.AppException.Companion.AUTH_EXCEPTION
-import com.elizav.tradingapp.domain.model.utils.Command
+import com.elizav.tradingapp.domain.utils.AppException.Companion.AUTH_EXCEPTION
+import com.elizav.tradingapp.domain.utils.Command
 import com.elizav.tradingapp.ui.auth.state.AuthEvent
 import com.elizav.tradingapp.ui.auth.state.AuthScreenState
 import com.elizav.tradingapp.ui.navigation.Route

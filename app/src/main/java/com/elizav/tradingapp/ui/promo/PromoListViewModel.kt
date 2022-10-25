@@ -3,13 +3,13 @@ package com.elizav.tradingapp.ui.promo
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.elizav.tradingapp.domain.interactor.promo.PromoInteractor
-import com.elizav.tradingapp.domain.model.utils.AppException.Companion.CLIENT_STATE_EXCEPTION
-import com.elizav.tradingapp.domain.model.utils.EncodedLink
+import com.elizav.tradingapp.domain.utils.AppException.Companion.CLIENT_STATE_EXCEPTION
+import com.elizav.tradingapp.domain.utils.EncodedLink
 import com.elizav.tradingapp.ui.navigation.Route
 import com.elizav.tradingapp.ui.navigation.navigator.AppNavigator
 import com.elizav.tradingapp.ui.promo.state.PromoListEvent
 import com.elizav.tradingapp.ui.promo.state.PromoListScreenState
-import com.elizav.tradingapp.domain.model.utils.Command
+import com.elizav.tradingapp.domain.utils.Command
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.channels.BufferOverflow
