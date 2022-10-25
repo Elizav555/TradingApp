@@ -10,4 +10,5 @@ interface AuthRepository {
     suspend fun partnerAuth(login: String, password: String): Result<String>
     suspend fun logout(): Result<Boolean>
     suspend fun checkAuth(): Result<Client?>
+    suspend fun invalidateTokens()
 }

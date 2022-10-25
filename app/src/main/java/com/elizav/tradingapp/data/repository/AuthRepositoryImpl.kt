@@ -1,18 +1,17 @@
 package com.elizav.tradingapp.data.repository
 
 import com.elizav.tradingapp.data.model.params.AuthParams
-import com.elizav.tradingapp.data.network.requests.PartnerRequest
 import com.elizav.tradingapp.data.network.api.PeanutApi
+import com.elizav.tradingapp.data.network.requests.PartnerRequest
 import com.elizav.tradingapp.domain.interactor.preferences.PreferencesInteractor
 import com.elizav.tradingapp.domain.model.client.Client
-import com.elizav.tradingapp.domain.repository.AuthRepository
 import com.elizav.tradingapp.domain.model.utils.AppException
 import com.elizav.tradingapp.domain.model.utils.AppException.Companion.AUTH_EXCEPTION
+import com.elizav.tradingapp.domain.repository.AuthRepository
 import javax.inject.Inject
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.withContext
 
 class AuthRepositoryImpl @Inject constructor(
     private val peanutApi: PeanutApi,
@@ -40,25 +39,25 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun auth(login: String, password: String): Result<Client> =
         peanutAuth(login, password).fold(
-                onSuccess = { peanutToken ->
-                    partnerAuth(login, password).fold(
-                        onSuccess = { partnerToken ->
-                            val client = Client(
-                                login = login,
-                                peanutToken = peanutToken,
-                                partnerToken = partnerToken
-                            )
-                            preferencesInteractor.saveClient(client)
-                            _isClientAuthed.tryEmit(true)
-                            Result.success(
-                                client
-                            )
-                        },
-                        onFailure = { ex -> Result.failure(ex) }
-                    )
-                },
-                onFailure = { ex -> Result.failure(ex) }
-            )
+            onSuccess = { peanutToken ->
+                partnerAuth(login, password).fold(
+                    onSuccess = { partnerToken ->
+                        val client = Client(
+                            login = login,
+                            peanutToken = "peanutToken",
+                            partnerToken = "partnerToken"
+                        )
+                        preferencesInteractor.saveClient(client)
+                        _isClientAuthed.tryEmit(true)
+                        Result.success(
+                            client
+                        )
+                    },
+                    onFailure = { ex -> Result.failure(ex) }
+                )
+            },
+            onFailure = { ex -> Result.failure(ex) }
+        )
 
     override suspend fun logout(): Result<Boolean> {
         return try {
@@ -80,5 +79,10 @@ class AuthRepositoryImpl @Inject constructor(
         } catch (ex: Throwable) {
             Result.failure(ex)
         }
+    }
+
+    override suspend fun invalidateTokens() {
+        logout()
+        _isClientAuthed.tryEmit(false)
     }
 }
