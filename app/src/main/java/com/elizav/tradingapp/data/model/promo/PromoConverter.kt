@@ -7,7 +7,7 @@ import kotlinx.serialization.json.Json
 class PromoConverter @Inject constructor() {
     operator fun invoke(responseBody: String): Map<String, Promo> {
         val dataString = dataInResponseRegex.find(responseBody)?.groups?.get(1)?.value
-        val formattedDataString = dataString?.replace(" ", "")?.removePrefix("{")
+        val formattedDataString = dataString?.removePrefix("{")
             ?.removeSuffix("}")
         return formattedDataString?.let { data ->
                 val promoNames = promoNamesInDataRegex.findAll(data)
@@ -27,7 +27,7 @@ class PromoConverter @Inject constructor() {
 
     companion object{
         val dataInResponseRegex = """<GetCCPromoResult>(.*)</GetCCPromoResult>""".toRegex()
-        val promoNamesInDataRegex = """"([a-z,_]*)":\{""".toRegex()
-        fun getPromoByNameInDataRegex(name:String) = """"$name":(\{[^{}]+\})""".toRegex()
+        val promoNamesInDataRegex = """"([a-z,_,\s]*)"\s*:\s*\{""".toRegex()
+        fun getPromoByNameInDataRegex(name:String) = """"$name"\s*:\s*(\{[^{}]+\})""".toRegex()
     }
 }

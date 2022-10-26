@@ -1,8 +1,7 @@
-package com.elizav.tradingapp.ui.signals
+package com.elizav.tradingapp.ui.widgets
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -11,8 +10,6 @@ import androidx.compose.ui.unit.dp
 import com.elizav.tradingapp.R
 import com.elizav.tradingapp.domain.model.signal.SignalPair
 import com.elizav.tradingapp.ui.signals.state.SignalsListScreenState
-import com.elizav.tradingapp.ui.widgets.DateTextField
-import com.elizav.tradingapp.ui.widgets.GroupedPairsCheckbox
 
 @Composable
 fun ChoseSignalParamsInputs(

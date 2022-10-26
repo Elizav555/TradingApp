@@ -8,11 +8,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -114,6 +118,16 @@ private fun SignalsListContent(
     onHandleDialog: (Boolean) -> Unit,
 ) {
     Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(
+                        text = stringResource(id = R.string.signals_list)
+                    )
+                },
+                scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(),
+            )
+        },
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) }
     ) { padding ->
         if (uiState.isLoading) {
@@ -158,7 +172,14 @@ private fun SignalsListContent(
                             key = { index ->
                                 uiState.signals[index].id
                             })
-                        { index -> SignalListItem(signal = uiState.signals[index]) }
+                        { index ->
+                            SignalListItem(signal = uiState.signals[index])
+                            if (index < uiState.signals.lastIndex)
+                                Divider(
+                                    color = MaterialTheme.colorScheme.secondary,
+                                    thickness = 1.dp
+                                )
+                        }
                     }
                 }
             }

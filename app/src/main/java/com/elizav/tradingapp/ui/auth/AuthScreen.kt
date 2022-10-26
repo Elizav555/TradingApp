@@ -4,12 +4,16 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -21,9 +25,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.elizav.tradingapp.R
+import com.elizav.tradingapp.domain.utils.Command
 import com.elizav.tradingapp.ui.auth.state.AuthEvent
 import com.elizav.tradingapp.ui.auth.state.AuthScreenState
-import com.elizav.tradingapp.domain.utils.Command
 import com.elizav.tradingapp.ui.widgets.Loading
 
 @Composable
@@ -69,6 +73,16 @@ private fun AuthContent(
     onLoginClick: (login: String, password: String) -> Unit
 ) {
     Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(
+                        text = stringResource(id = R.string.auth)
+                    )
+                },
+                scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(),
+            )
+        },
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) }
     ) { padding ->
         if (uiState.isLoading) {
@@ -77,7 +91,10 @@ private fun AuthContent(
             Column(
                 modifier = Modifier
                     .padding(padding)
-                    .fillMaxSize(),
+                    .fillMaxSize()
+                    .verticalScroll(
+                        rememberScrollState()
+                    ),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {

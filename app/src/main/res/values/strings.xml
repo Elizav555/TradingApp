@@ -5,7 +5,7 @@
     <string name="promo_list">Promo List</string>
     <string name="login">Login</string>
     <string name="bottom_host">Bottom Host</string>
-    <string name="auth">Auth</string>
+    <string name="auth">Authentication</string>
     <string name="logout">logout</string>
     <string name="get_signals">Get Signals</string>
     <string name="web_view">Web</string>
@@ -15,4 +15,15 @@
     <string name="from_date">From date</string>
     <string name="to_date">To date</string>
     <string name="signals_empty">Ups. Signals list is empty</string>
+    <string name="last_four_numb">Last four phone numbers</string>
+    <string name="city">City</string>
+    <string name="address">Address</string>
+    <string name="phone_hash">Phone hash</string>
+    <string name="zipCode">ZipCode</string>
+    <string name="balance">Balance</string>
+    <string name="currency">Currency</string>
+    <string name="current_trades_count">Current Trades Count</string>
+    <string name="current_trades_volume">Current Trades Volume</string>
+    <string name="back">Back</string>
+    <string name="promo_image">Promo Image</string>
 </resources>

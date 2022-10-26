@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import com.elizav.tradingapp.domain.utils.EncodedLink
 import com.elizav.tradingapp.ui.navigation.Route
 import com.elizav.tradingapp.ui.navigation.navigator.AppNavigator
+import com.elizav.tradingapp.ui.web.state.WebViewEvent
+import com.elizav.tradingapp.ui.web.state.WebViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,12 +19,23 @@ class WebViewViewModel @Inject constructor(
     private val appNavigator: AppNavigator,
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
-    private val _urlState: MutableStateFlow<String?> =
-        MutableStateFlow(null)
-    val urlState: StateFlow<String?> = _urlState
+    private val _uiState: MutableStateFlow<WebViewState> =
+        MutableStateFlow(WebViewState())
+    val uiState: StateFlow<WebViewState> = _uiState
 
     init {
         val url: String? = savedStateHandle[Route.WebViewRoute.URL_KEY]
-        _urlState.update { url?.let { EncodedLink.decodeLink(it) } }
+        _uiState.update { it.copy(url = url?.let { url -> EncodedLink.decodeLink(url) }) }
+    }
+
+    fun onEvent(event: WebViewEvent) {
+        when (event) {
+            WebViewEvent.GoBackEvent -> {
+                appNavigator.tryNavigateBack()
+            }
+            is WebViewEvent.HandleLoading -> {
+                _uiState.update { it.copy(isLoading = event.isLoading) }
+            }
+        }
     }
 }

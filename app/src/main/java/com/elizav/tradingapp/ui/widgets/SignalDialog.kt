@@ -4,6 +4,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -16,7 +18,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.elizav.tradingapp.R
 import com.elizav.tradingapp.domain.model.signal.SignalPair
-import com.elizav.tradingapp.ui.signals.ChoseSignalParamsInputs
 import com.elizav.tradingapp.ui.signals.state.SignalsListScreenState
 
 
@@ -31,12 +32,15 @@ fun SignalsDialog(
     snackbarHostState: SnackbarHostState
 ) {
     AlertDialog(
-        modifier=Modifier.padding(top = 32.dp, bottom = 48.dp),
+        modifier = Modifier.padding(top = 32.dp, bottom = 48.dp),
         onDismissRequest = onCloseDialog,
         text = {
             Column(
                 modifier = Modifier
-                    .fillMaxSize(),
+                    .fillMaxSize()
+                    .verticalScroll(
+                        rememberScrollState()
+                    ),
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
                 SnackbarHost(hostState = snackbarHostState)
@@ -67,13 +71,13 @@ fun SignalsDialog(
 
 @Preview(showSystemUi = true)
 @Composable
-private fun Preview(){
+private fun Preview() {
     SignalsDialog(
         uiState = SignalsListScreenState(false),
-        onPairChange = {_,_->},
+        onPairChange = { _, _ -> },
         onFromChange = {},
         onToChange = {},
-        onSubmitDialog = {  },
+        onSubmitDialog = { },
         onCloseDialog = { },
         snackbarHostState = SnackbarHostState()
     )
