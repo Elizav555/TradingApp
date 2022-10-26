@@ -42,6 +42,7 @@ class AuthViewModel @Inject constructor(
             is AuthEvent.SignInEvent -> {
                 _uiState.update { it.copy(isLoading = true) }
                 // signIn(event.login, event.password)
+                //Mocked values
                 signIn(MOCKED_LOGIN, MOCKED_PASSWORD)
             }
         }

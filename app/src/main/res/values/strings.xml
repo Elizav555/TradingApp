@@ -26,4 +26,6 @@
     <string name="current_trades_volume">Current Trades Volume</string>
     <string name="back">Back</string>
     <string name="promo_image">Promo Image</string>
+    <string name="enter_login">Enter login</string>
+    <string name="enter_password">Enter password</string>
 </resources>
