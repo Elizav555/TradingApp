@@ -74,7 +74,10 @@ class AuthViewModel @Inject constructor(
     }
 
     private fun navigateToBottomHost(client: Client) {
-        appNavigator.tryNavigateTo(Route.BottomGraphRoute().invoke(client = client))
+        appNavigator.tryNavigateTo(
+            Route.BottomGraphRoute().invoke(client = client),
+            popUpToRoute = Route.BottomGraphRoute().value
+        )
     }
 
     companion object {

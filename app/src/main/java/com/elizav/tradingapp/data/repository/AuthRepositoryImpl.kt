@@ -5,9 +5,11 @@ import com.elizav.tradingapp.data.network.api.PeanutApi
 import com.elizav.tradingapp.data.network.requests.PartnerRequest
 import com.elizav.tradingapp.domain.interactor.preferences.PreferencesInteractor
 import com.elizav.tradingapp.domain.model.client.Client
+import com.elizav.tradingapp.domain.repository.AuthRepository
 import com.elizav.tradingapp.domain.utils.AppException
 import com.elizav.tradingapp.domain.utils.AppException.Companion.AUTH_EXCEPTION
-import com.elizav.tradingapp.domain.repository.AuthRepository
+import java.net.SocketTimeoutException
+import java.net.UnknownHostException
 import javax.inject.Inject
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -24,18 +26,42 @@ class AuthRepositoryImpl @Inject constructor(
     override fun isClientAuthed(): SharedFlow<Boolean> = _isClientAuthed
 
     override suspend fun peanutAuth(login: String, password: String): Result<String> =
-        with(peanutApi.isAccountCredentialsCorrect(AuthParams(login, password))) {
-            if (isSuccessful && body() != null) {
-                Result.success(body()!!.token)
-            } else {
-                Result.failure(AppException.AuthException(errorBody()?.string() ?: AUTH_EXCEPTION))
+        try {
+            with(peanutApi.isAccountCredentialsCorrect(AuthParams(login, password))) {
+                if (isSuccessful && body() != null) {
+                    Result.success(body()!!.token)
+                } else {
+                    Result.failure(
+                        AppException.AuthException(
+                            errorBody()?.string() ?: AUTH_EXCEPTION
+                        )
+                    )
+                }
             }
+        } catch (ex: Throwable) {
+            if (ex is UnknownHostException|| ex is SocketTimeoutException) {
+                Result.failure(AppException.InternetException())
+            } else Result.failure(
+                AppException.AuthException(
+                    ex.message ?: AUTH_EXCEPTION
+                )
+            )
         }
 
     override suspend fun partnerAuth(login: String, password: String): Result<String> =
-        partnerRequest(
-            AuthParams(login, password)
-        )
+        try {
+            partnerRequest(
+                AuthParams(login, password)
+            )
+        } catch (ex: Throwable) {
+            if (ex is UnknownHostException|| ex is SocketTimeoutException) {
+                Result.failure(AppException.InternetException())
+            } else Result.failure(
+                AppException.AuthException(
+                    ex.message ?: AUTH_EXCEPTION
+                )
+            )
+        }
 
     override suspend fun auth(login: String, password: String): Result<Client> =
         peanutAuth(login, password).fold(

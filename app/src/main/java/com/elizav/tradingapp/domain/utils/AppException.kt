@@ -9,11 +9,16 @@ sealed class AppException(override val message: String) : Exception(message) {
     data class DateParseException(override val message: String = DATE_PARSE_EXCEPTION) :
         AppException(message)
 
+    data class InternetException(override val message: String = INTERNET_CONNECTION_EXCEPTION) :
+        AppException(message)
+
     companion object {
+        const val INTERNET_CONNECTION_EXCEPTION = "No internet connection"
         const val API_EXCEPTION = "Api Error"
         const val AUTH_EXCEPTION = "Auth Error"
         const val CLIENT_STATE_EXCEPTION = "Illegal Client state"
         const val DATE_PARSE_EXCEPTION = "Date parse exception"
-        const val SIGNALS_PARAMS_EXCEPTION="Please choose at least one pair. Dates must be correct"
+        const val SIGNALS_PARAMS_EXCEPTION =
+            "Please choose at least one pair. Dates must be correct"
     }
 }
